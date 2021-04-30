@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breadcrumbs.Tests", "test\B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ECBD80CF-B62A-4451-AA48-80137300980B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breadcrumbs.Implementations.LinkedList", "Breadcrumbs.Implementations.LinkedList\Breadcrumbs.Implementations.LinkedList.csproj", "{C1832462-EE79-4517-873B-E330D035D808}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breadcrumbs.Implementations.LinkedList", "src\Breadcrumbs.Implementations.LinkedList\Breadcrumbs.Implementations.LinkedList.csproj", "{C1832462-EE79-4517-873B-E330D035D808}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
