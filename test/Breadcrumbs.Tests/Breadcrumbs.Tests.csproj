@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Breadcrumbs.Implementations.LinkedList\Breadcrumbs.Implementations.LinkedList.csproj" />
     <ProjectReference Include="..\..\src\Breadcrumbs.Core\Breadcrumbs.Core.csproj" />
+    <ProjectReference Include="..\..\src\Breadcrumbs.Implementations.LinkedList\Breadcrumbs.Implementations.LinkedList.csproj" />
   </ItemGroup>
 
 </Project>
