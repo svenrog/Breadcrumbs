@@ -28,6 +28,14 @@ namespace Breadcrumbs.Tests
             new TestPart("1.1.2.2", "1.1.2")
         };
 
+        private static readonly IEnumerable<IBreadcrumbPart> _hierarchyRigged = new List<TestPart>
+        {
+            new TestPart("1", ""),
+            new TestPart("1.1", "1"),
+            new TestPart("1.1.1", "1.1"),
+            new TestPart("1.1.1", "1.1"),
+        };
+
         [Fact]
         public void Sorts_hierarchy_correctly()
         {
@@ -74,6 +82,17 @@ namespace Breadcrumbs.Tests
             timer.Stop();
 
             Assert.InRange(timer.ElapsedMilliseconds, 0, 1000);
+        }
+
+        [Fact]
+        public void Handles_duplicate_elements()
+        {
+            var randomizer = new Random();
+            var sorter = new LinkedListBreadcrumbSorter();
+            var parts = _hierarchyRigged.Shuffle(randomizer);
+            var partsSorted = sorter.SortByChildHierarchy(parts).ToArray();
+
+            Assert.Equal(3, partsSorted.Length);
         }
     }
 }
