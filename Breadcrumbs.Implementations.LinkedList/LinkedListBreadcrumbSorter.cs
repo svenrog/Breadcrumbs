@@ -24,10 +24,10 @@ namespace Breadcrumbs.Implementations.LinkedList
                 iterations++;
 
                 var part = items.Dequeue();
-                var partInList = parts.Find(part);
-
-                if (partInList != null || added.Contains(part.CategoryId))
+                if (added.Contains(part.CategoryId))
                     continue;
+
+                LinkedListNode<IBreadcrumbPart> partInList;
 
                 if (children.ContainsKey(part.ParentId))
                 {
