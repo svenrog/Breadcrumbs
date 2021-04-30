@@ -8,9 +8,9 @@ namespace Breadcrumbs.Tests.Extensions
     {
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random randomizer)
         {
-            var elements = source.ToArray();
+            var elements = source.ToList();
 
-            for (var i = elements.Length - 1; i >= 0; i--)
+            for (var i = elements.Count - 1; i >= 0; i--)
             {
                 var swapIndex = randomizer.Next(i + 1);
 

@@ -12,7 +12,7 @@ namespace Breadcrumbs.Implementations.LinkedList
             var items = new Queue<IBreadcrumbPart>(breadcrumbs);
             var parents = items.GetDictionary(x => x.ParentId);
             var children = items.GetDictionary(x => x.CategoryId);
-            var added = new HashSet<string>();
+            var added = new HashSet<string>(items.Count);
 
             var parts = new LinkedList<IBreadcrumbPart>();            
             var maxIterations = Math.Pow(items.Count, 2);
