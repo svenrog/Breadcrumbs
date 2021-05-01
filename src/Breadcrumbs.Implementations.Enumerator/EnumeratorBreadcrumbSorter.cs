@@ -17,8 +17,12 @@ namespace Breadcrumbs.Implementations.LinkedList
 
             foreach (var item in items)
             {
-                var childItem = items.Find(x => x.CategoryId == item.ParentId);
-                if (childItem != null)
+                var parentItem = items.Find(x => x.CategoryId == item.ParentId);
+                if (parentItem != null)
+                    continue;
+
+                var childItem = items.Find(x => x.ParentId == item.CategoryId);
+                if (childItem == null)
                     continue;
 
                 currentItem = item;

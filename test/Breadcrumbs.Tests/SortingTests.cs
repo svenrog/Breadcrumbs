@@ -86,7 +86,8 @@ namespace Breadcrumbs.Tests
 
             for (var i = 0; i < 100000; i++)
             {
-                sorter.SortByChildHierarchy(_hierarchy);
+                // Actually enumerate to test real execution speed
+                foreach (var item in sorter.SortByChildHierarchy(_hierarchy));
             }
 
             timer.Stop();
