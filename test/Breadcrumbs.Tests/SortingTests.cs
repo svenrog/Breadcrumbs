@@ -40,7 +40,7 @@ namespace Breadcrumbs.Tests
         public void Sorts_hierarchy_correctly()
         {
             var randomizer = new Random();
-            var sorter = new ListBreadcrumbSorter();
+            var sorter = new EnumeratorBreadcrumbSorter();
 
             for (var i = 0; i < 16; i++)
             {
@@ -61,7 +61,7 @@ namespace Breadcrumbs.Tests
         public void Omits_unrelated_parts()
         {
             var randomizer = new Random();
-            var sorter = new ListBreadcrumbSorter();
+            var sorter = new EnumeratorBreadcrumbSorter();
 
             for (var i = 0; i < 16; i++)
             {
@@ -69,13 +69,17 @@ namespace Breadcrumbs.Tests
                 var partsSorted = sorter.SortByChildHierarchy(parts).ToArray();
 
                 Assert.Equal(3, partsSorted.Length);
+
+                var unrelated = partsSorted.FirstOrDefault(x => x.ParentId == "1.1.2");
+
+                Assert.Null(unrelated);
             }
         }
 
         [Fact]
         public void Runs_pretty_fast()
         {
-            var sorter = new ListBreadcrumbSorter();
+            var sorter = new EnumeratorBreadcrumbSorter();
             var timer = new Stopwatch();
             
             timer.Start();
@@ -94,7 +98,7 @@ namespace Breadcrumbs.Tests
         public void Handles_duplicate_elements()
         {
             var randomizer = new Random();
-            var sorter = new ListBreadcrumbSorter();
+            var sorter = new EnumeratorBreadcrumbSorter();
 
             for (var i = 0; i < 16; i++)
             {

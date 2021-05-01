@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ECBD80CF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breadcrumbs.Implementations.LinkedList", "src\Breadcrumbs.Implementations.LinkedList\Breadcrumbs.Implementations.LinkedList.csproj", "{C1832462-EE79-4517-873B-E330D035D808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breadcrumbs.Implementations.List", "src\Breadcrumbs.Implementations.List\Breadcrumbs.Implementations.List.csproj", "{E4753BB1-D6EC-49B3-89B5-3D5AE586F3F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Breadcrumbs.Implementations.List", "src\Breadcrumbs.Implementations.List\Breadcrumbs.Implementations.List.csproj", "{E4753BB1-D6EC-49B3-89B5-3D5AE586F3F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breadcrumbs.Implementations.Enumerator", "src\Breadcrumbs.Implementations.Enumerator\Breadcrumbs.Implementations.Enumerator.csproj", "{269283BA-916B-43C3-B56F-89052023C05C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{E4753BB1-D6EC-49B3-89B5-3D5AE586F3F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4753BB1-D6EC-49B3-89B5-3D5AE586F3F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4753BB1-D6EC-49B3-89B5-3D5AE586F3F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269283BA-916B-43C3-B56F-89052023C05C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269283BA-916B-43C3-B56F-89052023C05C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269283BA-916B-43C3-B56F-89052023C05C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269283BA-916B-43C3-B56F-89052023C05C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
