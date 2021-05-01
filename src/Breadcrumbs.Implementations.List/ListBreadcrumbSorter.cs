@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Breadcrumbs.Implementations.LinkedList
 {
-    public class LinkedListBreadcrumbSorter : IBreadcrumbSorter
+    public class ListBreadcrumbSorter : IBreadcrumbSorter
     {
         public IEnumerable<IBreadcrumbPart> SortByChildHierarchy(IEnumerable<IBreadcrumbPart> breadcrumbs)
         {
@@ -14,7 +14,7 @@ namespace Breadcrumbs.Implementations.LinkedList
             var children = items.GetDictionary(x => x.CategoryId);
             var added = new HashSet<string>(items.Count);
 
-            var parts = new LinkedList<IBreadcrumbPart>();
+            var parts = new List<IBreadcrumbPart>(items.Count);            
             var maxIterations = Math.Pow(items.Count, 2);
             var hasAddedTopLevel = false;
             var iterations = 0;
@@ -27,15 +27,15 @@ namespace Breadcrumbs.Implementations.LinkedList
                 if (added.Contains(part.CategoryId))
                     continue;
 
-                LinkedListNode<IBreadcrumbPart> partInList;
+                int partIndex;
 
                 if (children.ContainsKey(part.ParentId))
                 {
-                    partInList = parts.Find(children[part.ParentId]);
+                    partIndex = parts.FindIndex(x => x.CategoryId == part.ParentId);
 
-                    if (partInList != null)
+                    if (partIndex >= 0)
                     {
-                        parts.AddAfter(partInList, part);
+                        parts.Insert(partIndex + 1, part);
                         added.Add(part.CategoryId);
                     }
                     else
@@ -45,16 +45,16 @@ namespace Breadcrumbs.Implementations.LinkedList
                 }
                 else if (parents.ContainsKey(part.CategoryId))
                 {
-                    partInList = parts.Find(parents[part.CategoryId]);
+                    partIndex = parts.FindIndex(x => x.ParentId == part.CategoryId);
 
-                    if (partInList != null)
+                    if (partIndex >= 0)
                     {
-                        parts.AddBefore(partInList, part);
+                        parts.Insert(partIndex, part);
                         added.Add(part.CategoryId);
                     }
                     else if (hasAddedTopLevel == false)
                     {
-                        parts.AddFirst(part);
+                        parts.Insert(0, part);
                         added.Add(part.CategoryId);
                         hasAddedTopLevel = true;
                     }

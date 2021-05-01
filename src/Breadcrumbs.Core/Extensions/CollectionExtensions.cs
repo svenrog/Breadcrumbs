@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Breadcrumbs.Implementations.LinkedList.Extensions
+namespace Breadcrumbs.Core.Extensions
 {
     public static class CollectionExtensions
     {

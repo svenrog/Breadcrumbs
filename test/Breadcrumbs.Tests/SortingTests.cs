@@ -40,9 +40,9 @@ namespace Breadcrumbs.Tests
         public void Sorts_hierarchy_correctly()
         {
             var randomizer = new Random();
-            var sorter = new LinkedListBreadcrumbSorter();
+            var sorter = new ListBreadcrumbSorter();
 
-            for (var i = 0; i < 100; i++)
+            for (var i = 0; i < 16; i++)
             {
                 var parts = _hierarchy.Shuffle(randomizer);
                 var partsSorted = sorter.SortByChildHierarchy(parts).ToArray();
@@ -60,16 +60,22 @@ namespace Breadcrumbs.Tests
         [Fact]
         public void Omits_unrelated_parts()
         {
-            var sorter = new LinkedListBreadcrumbSorter();
-            var parts = sorter.SortByChildHierarchy(_hierarchyUnrelated).ToArray();
+            var randomizer = new Random();
+            var sorter = new ListBreadcrumbSorter();
 
-            Assert.Equal(3, parts.Length);
+            for (var i = 0; i < 16; i++)
+            {
+                var parts = _hierarchyUnrelated.Shuffle(randomizer);
+                var partsSorted = sorter.SortByChildHierarchy(parts).ToArray();
+
+                Assert.Equal(3, partsSorted.Length);
+            }
         }
 
         [Fact]
         public void Runs_pretty_fast()
         {
-            var sorter = new LinkedListBreadcrumbSorter();
+            var sorter = new ListBreadcrumbSorter();
             var timer = new Stopwatch();
             
             timer.Start();
@@ -88,11 +94,15 @@ namespace Breadcrumbs.Tests
         public void Handles_duplicate_elements()
         {
             var randomizer = new Random();
-            var sorter = new LinkedListBreadcrumbSorter();
-            var parts = _hierarchyRigged.Shuffle(randomizer);
-            var partsSorted = sorter.SortByChildHierarchy(parts).ToArray();
+            var sorter = new ListBreadcrumbSorter();
 
-            Assert.Equal(3, partsSorted.Length);
+            for (var i = 0; i < 16; i++)
+            {
+                var parts = _hierarchyRigged.Shuffle(randomizer);
+                var partsSorted = sorter.SortByChildHierarchy(parts).ToArray();
+
+                Assert.Equal(3, partsSorted.Length);
+            }
         }
     }
 }
