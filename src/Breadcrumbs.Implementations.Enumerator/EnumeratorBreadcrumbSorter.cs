@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Breadcrumbs.Implementations.LinkedList
+namespace Breadcrumbs.Implementations.Enumerator
 {
     public class EnumeratorBreadcrumbSorter : IBreadcrumbSorter
     {

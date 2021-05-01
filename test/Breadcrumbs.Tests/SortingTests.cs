@@ -1,5 +1,5 @@
 using Breadcrumbs.Core;
-using Breadcrumbs.Implementations.LinkedList;
+using Breadcrumbs.Implementations.Enumerator;
 using Breadcrumbs.Tests.Extensions;
 using Breadcrumbs.Tests.Models;
 using System;

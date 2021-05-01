@@ -3,7 +3,7 @@ using Breadcrumbs.Core.Extensions;
 using System;
 using System.Collections.Generic;
 
-namespace Breadcrumbs.Implementations.LinkedList
+namespace Breadcrumbs.Implementations.List
 {
     public class ListBreadcrumbSorter : IBreadcrumbSorter
     {
