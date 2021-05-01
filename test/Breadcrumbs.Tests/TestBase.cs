@@ -1,5 +1,4 @@
-using Breadcrumbs.Core;
-using Breadcrumbs.Implementations.Enumerator;
+﻿using Breadcrumbs.Core;
 using Breadcrumbs.Tests.Extensions;
 using Breadcrumbs.Tests.Models;
 using System;
@@ -10,7 +9,7 @@ using Xunit;
 
 namespace Breadcrumbs.Tests
 {
-    public class SortingTests
+    public abstract class TestBase
     {
         private static readonly IEnumerable<IBreadcrumbPart> _hierarchy = new List<TestPart>
         {
@@ -36,11 +35,9 @@ namespace Breadcrumbs.Tests
             new TestPart("1.1.1", "1.1"),
         };
 
-        [Fact]
-        public void Sorts_hierarchy_correctly()
+        public void SortsHierarchyCorrectly(IBreadcrumbSorter sorter)
         {
             var randomizer = new Random();
-            var sorter = new EnumeratorBreadcrumbSorter();
 
             for (var i = 0; i < 16; i++)
             {
@@ -57,11 +54,9 @@ namespace Breadcrumbs.Tests
             }
         }
 
-        [Fact]
-        public void Omits_unrelated_parts()
+        public void OmitsUnrelatedParts(IBreadcrumbSorter sorter)
         {
             var randomizer = new Random();
-            var sorter = new EnumeratorBreadcrumbSorter();
 
             for (var i = 0; i < 16; i++)
             {
@@ -76,18 +71,16 @@ namespace Breadcrumbs.Tests
             }
         }
 
-        [Fact]
-        public void Runs_pretty_fast()
+        public void RunsPrettyFast(IBreadcrumbSorter sorter)
         {
-            var sorter = new EnumeratorBreadcrumbSorter();
             var timer = new Stopwatch();
-            
+
             timer.Start();
 
             for (var i = 0; i < 100000; i++)
             {
                 // Actually enumerate to test real execution speed
-                foreach (var item in sorter.SortByChildHierarchy(_hierarchy));
+                foreach (var item in sorter.SortByChildHierarchy(_hierarchy)) ;
             }
 
             timer.Stop();
@@ -95,11 +88,9 @@ namespace Breadcrumbs.Tests
             Assert.InRange(timer.ElapsedMilliseconds, 0, 1000);
         }
 
-        [Fact]
-        public void Handles_duplicate_elements()
+        public void HandlesDuplicateElements(IBreadcrumbSorter sorter)
         {
             var randomizer = new Random();
-            var sorter = new EnumeratorBreadcrumbSorter();
 
             for (var i = 0; i < 16; i++)
             {
